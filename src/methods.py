@@ -5,18 +5,13 @@ import tensorflow as tf
 from data_bridge import *
 import yolo_model
 import yolo_settings
-
-# from utils import VOC
+import sys
 import os
 import time
 # import matplotlib.pyplot as plt TODO: check what error comes when using matplotlib
 
 
 class Raw_video:
-    """
-    Whenever we want to just watch raw video this  class will be used for method.
-    """
-
     def __init__(self, root):
         self.data_bridge = Singleton(Data_bridge)
         self.gui_root = root
@@ -33,10 +28,6 @@ class Raw_video:
 
 
 class YOLO_person_detection:
-    """
-    YOLO person detection
-    """
-
     def __init__(self, root):
         self.sess = tf.InteractiveSession()
         self.model = yolo_model.Model(training=False)
@@ -46,7 +37,7 @@ class YOLO_person_detection:
         self.boundary2 = self.boundary1 + yolo_settings.cell_size * yolo_settings.cell_size * yolo_settings.box_per_cell
         try:
             self.saver.restore(self.sess, os.getcwd() + '/YOLO_small.ckpt')
-            print 'load from past checkpoint'
+            print( 'load from past checkpoint')
         except:
             try:
                 self.saver.restore(self.sess, os.getcwd() + '/YOLO_small.ckpt')
@@ -61,22 +52,108 @@ class YOLO_person_detection:
     def main_thread(self):
         self.cap = cv2.VideoCapture(self.data_bridge.selected_video_file_path)
         num = 0
+        number=0
         while self.data_bridge.start_process_manager:
-            ret, frame = self.cap.read()
-            frame = cv2.resize(frame, (720, 480))
-            if num < self.skip_frames:
-                print(num)
-                num += 1
+            if self.data_bridge.start_process_manager and (number==0 or number>99):
+                if number>99:
+                    number=0
+                ret, frame = self.cap.read()
+                frame = cv2.resize(frame, (720, 480))
+                if num < self.skip_frames:
+
+                    num += 1
+                    cv2.imshow('Camera', frame)
+                    cv2.waitKey(10)
+                    continue
+                result = self.detect(frame)
+                # print(np.shape(result), "result shape", result[:][0])
+                self.draw_result(frame, result)
+                number+=1
                 cv2.imshow('Camera', frame)
-                cv2.waitKey(10)
-                continue
-            result = self.detect(frame)
-            # print(np.shape(result), "result shape", result[:][0])
-            self.draw_result(frame, result)
-            cv2.imshow('Camera', frame)
-            cv2.waitKey(1)
-            num += 1
-            self.gui_root.update()
+                cv2.waitKey(1)
+                num += 1
+                self.gui_root.update()
+
+            if (self.data_bridge.start_process_manager and (number<100)):
+                a = int(len(result))
+                tracker_types = ['BOOSTING', 'MIL', 'KCF', 'TLD', 'MEDIANFLOW', ]
+                tracker_type = self.data_bridge.methode_chosen_for_tracking
+                print(tracker_type)
+                if True:
+                    if tracker_type == 'BOOSTING':
+                        tracker = []
+                        i = 0
+                        while i < a:
+                            tracker.append(cv2.TrackerBoosting_create())
+                            i = i + 1
+                    if tracker_type == 'MIL':
+                        tracker = []
+                        i = 0
+                        while i < a:
+                            tracker.append(cv2.TrackerMIL_create())
+                            i = i + 1
+                    if tracker_type == 'KCF':
+                        tracker = []
+                        i = 0
+                        while i < a:
+                            tracker.append(cv2.TrackerKCF_create())
+                            i = i + 1
+                    if tracker_type == 'TLD':
+                        tracker = []
+                        i = 0
+                        while i < a:
+                            tracker.append(cv2.TrackerTLD_create())
+                            i = i + 1
+                    if tracker_type == 'MEDIANFLOW':
+                        tracker = []
+                        i = 0
+                        while i < a:
+                            tracker.append(cv2.TrackerMedianFlow_create())
+                            i = i + 1
+                bbox = []
+                i = 0
+                while i < a:
+                    x = int(result[i][1])
+                    y = int(result[i][2])
+                    w = int(result[i][3] / 2)
+                    h = int(result[i][4] / 2)
+                    res=(x-w,y-h,2*w,2*h)
+
+                    bbox.append(res)
+                    #print(bbox[i])
+                    tracker[i].init(frame, bbox[i])
+                    i = i+1
+
+                while (number<100)and(self.data_bridge.start_process_manager):
+                    ret, frame = self.cap.read()
+                    frame = cv2.resize(frame, (720, 480))
+                    timer = cv2.getTickCount()
+                    i = 0
+                    while i < a:
+                        ret, bbox[i] = tracker[i].update(frame)
+                        i = i + 1
+                    fps = cv2.getTickFrequency() / (cv2.getTickCount() - timer);
+
+                    if ret:
+                        i = 0
+                        while i < a:
+                            p1 = (int(bbox[i][0]), int(bbox[i][1]))
+                            p2 = (int(bbox[i][0] + bbox[i][2]), int(bbox[i][1] + bbox[i][3]))
+                            cv2.rectangle(frame, p1, p2, (255, 255, 255), 2, 1)
+                            i = i + 1
+                    else:
+                        cv2.putText(frame, "Tracking failure detected", (100, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.75,(0, 0, 255),2)
+
+                    cv2.putText(frame, str(i)+ " Object detected", (400, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75,
+                                (50, 170, 50), 2);
+                    cv2.putText(frame, tracker_type + " Tracker", (100, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50),2);
+                    cv2.putText(frame, "FPS : " + str(int(fps)), (100, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (50, 170, 50),2);
+                    cv2.imshow("Camera", frame)
+                    k = cv2.waitKey(1)
+                    self.gui_root.update()
+                    number+=1
+                    print("number",number)
+
         cv2.destroyAllWindows()
         self.cap.release()
 
@@ -87,7 +164,6 @@ class YOLO_person_detection:
         inputs = (inputs / 255.0) * 2.0 - 1.0
         inputs = np.reshape(inputs, (1, yolo_settings.image_size, yolo_settings.image_size, 3))
         result = self.detect_from_cvmat(inputs)[0]
-        print (result)
         for i in range(len(result)):
             result[i][1] *= (1.0 * img_w / yolo_settings.image_size)
             result[i][2] *= (1.0 * img_h / yolo_settings.image_size)

@@ -4,7 +4,6 @@ from process_manager import Process_manager
 import threading
 
 
-
 class App:
     """
     This is app class which will be called when running our UI. Everything other will be called inside this class.
@@ -17,13 +16,12 @@ class App:
         self.process_manager = Process_manager(self.gui_creator.root)
 
     def gui_thread(self):
-        self.gui_creator.root.after(0,self.process_task)
+        self.gui_creator.root.after(0, self.process_task)
         self.gui_creator.root.mainloop()
 
     def process_task(self):
-        print ("in process task")
+        print("in process task")
         self.process_manager.main_task()
-
 
 
 app = App()

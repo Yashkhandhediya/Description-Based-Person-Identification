@@ -12,6 +12,7 @@ class Data_bridge:
     _instance = None
     def __init__(self):
         self.methode_chosen_by_radio_butten = ''
+        self.methode_chosen_for_tracking=''
         self.start_process_manager = False
         self.save_data_in_video_format = False
         self.save_data_in_image_format = True
