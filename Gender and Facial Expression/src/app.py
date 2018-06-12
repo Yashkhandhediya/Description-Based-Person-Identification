@@ -20,7 +20,7 @@ class App:
         self.gui_creator.root.mainloop()
 
     def process_task(self):
-        print("in process task")
+        print("In process task")
         self.process_manager.main_task()
 
 

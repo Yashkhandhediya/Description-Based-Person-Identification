@@ -124,9 +124,8 @@ class Face_detection:
 
                 print("File has been stored in Images folder")
                 print("Press stop processing to exit")
-
-            while self.data_bridge.start_process_manager:
                 self.gui_root.update()
+
 
         if( (self.data_bridge.processing_chosen_by_radio_butten == 'vid') or (self.data_bridge.processing_chosen_by_radio_butten=='web')):
             detection_model_path = '../trained_models/detection_models/haarcascade_frontalface_default.xml'

@@ -1,15 +1,12 @@
 from methods import *
 from data_bridge import *
 
-
-
-
 class Process_manager:
 
     def __init__(self, root):
         self.data_bridge = Singleton(Data_bridge)
         self.gui_root = root
-        self.methods_dict = {'raw_video': Raw_file(self.gui_root),
+        self.methods_dict = {'raw_file': Raw_file(self.gui_root),
                              'face_det': Face_detection(self.gui_root)
                              }
 
