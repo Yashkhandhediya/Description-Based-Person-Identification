@@ -21,8 +21,10 @@ class App:
 
     def process_task(self):
         print("In process task")
-        self.process_manager.main_task()
-
+        try:
+            self.process_manager.main_task()
+        except:
+            pass
 
 app = App()
 app.gui_thread()

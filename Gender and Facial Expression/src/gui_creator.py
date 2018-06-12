@@ -104,5 +104,4 @@ class GUI_Creator_temp:
         self.defining_geometry_grid()
 
     def update(self):
-        print ("Here")
         self.root.mainloop()

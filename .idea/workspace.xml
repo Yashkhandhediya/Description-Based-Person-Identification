@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2b260ea-0e1b-4c94-91a5-35780072d1d2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gender and Facial Expression/src/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gender and Facial Expression/src/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gender and Facial Expression/src/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gender and Facial Expression/src/methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gender and Facial Expression/src/gui_creator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gender and Facial Expression/src/gui_creator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gender and Facial Expression/src/train_emotion_classifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/Gender and Facial Expression/src/train_emotion_classifier.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="process_manager.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py">
+      <file leaf-file-name="gui_creator.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/gui_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+            <state relative-caret-position="-1554">
+              <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
               </folding>
@@ -34,6 +36,7 @@
       <find>aay</find>
       <find>aayu</find>
       <find>proc</find>
+      <find>print</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -43,9 +46,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Gender and Facial Expression/src/methods.py" />
-        <option value="$PROJECT_DIR$/Gender and Facial Expression/src/app.py" />
+        <option value="$PROJECT_DIR$/Gender and Facial Expression/src/train_emotion_classifier.py" />
         <option value="$PROJECT_DIR$/Gender and Facial Expression/src/gui_creator.py" />
         <option value="$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py" />
+        <option value="$PROJECT_DIR$/Gender and Facial Expression/src/app.py" />
       </list>
     </option>
   </component>
@@ -146,14 +150,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.28613138" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2788321" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -176,6 +179,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/app.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -210,7 +223,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Person detection and tracking/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-371">
+        <state relative-caret-position="-371" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/train_emotion_classifier.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -219,35 +255,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/methods.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="52" column="35" lean-forward="true" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="149">
+          <caret line="124" column="21" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/gui_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="70" column="8" selection-start-line="70" selection-start-column="8" selection-end-line="70" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Gender and Facial Expression/src/process_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33">
-          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        <state relative-caret-position="-1554">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>

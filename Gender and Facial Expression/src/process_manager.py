@@ -17,6 +17,10 @@ class Process_manager:
         while True:
             while not self.data_bridge.start_process_manager:
                 A = 0
-                self.gui_root.update()
+                try:
+                    self.gui_root.update()
+                except:
+                    print("Program has been closed")
+                    break
             self.methods_dict[self.data_bridge.methode_chosen_by_radio_butten].main_thread()
             self.gui_root.update()
